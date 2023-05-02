@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template
 
 from ..app import mysql
-
+# from ..app import app
 
 hello = Blueprint('hello',__name__)
 

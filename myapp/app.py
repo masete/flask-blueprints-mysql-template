@@ -33,8 +33,8 @@ def create_app():
 		
 		
 	# mysql connection details
-	app.config['MYSQL_HOST'] = os.environ.get('MY_APP_DB_HOST','127.0.0.1')
-	app.config['MYSQL_PORT'] = os.environ.get('MY_APP_DB_PORT',3306)	
+	app.config['MYSQL_HOST'] = os.environ.get('MY_APP_DB_HOST','digestafrica-do-user-4558844-0.b.db.ondigitalocean.com')
+	app.config['MYSQL_PORT'] = os.environ.get('MY_APP_DB_PORT',25060)	
 	app.config['MYSQL_USER'] = os.environ['MY_APP_DBUSER_NAME']
 	app.config['MYSQL_PASSWORD'] = os.environ['MY_APP_DBUSER_PASSWORD']	
 	app.config['MYSQL_DB'] = os.environ['MY_APP_DB_NAME']
@@ -43,11 +43,11 @@ def create_app():
 	mysql.init_app(app)	
 	
 	# common prefix for all routes in blueprints
-	APP_URL_PREFIX = os.environ.get('MY_APP_PREFIX',None)
+	# APP_URL_PREFIX = os.environ.get('MY_APP_PREFIX',None)
 	# register all blueprints
-	from .views import blueprints
+	from .views.bluep import blueprints
 	for bp in blueprints:
-		app.register_blueprint(bp,url_prefix=APP_URL_PREFIX)
+		app.register_blueprint(bp)
 		
 		
 	return app
